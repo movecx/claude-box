@@ -3,8 +3,11 @@ name = "claude-box"
 version = "0.1.0"
 edition = "2024"
 description = "A multi-platform Claude Code sandbox manager"
-license = "MIT"
+license = "BSD-3-Clause"
 repository = "https://github.com/movecx/claude-box"
+readme = "README.md"
+keywords = ["claude", "sandbox", "cli", "terminal", "ai"]
+categories = ["command-line-utilities", "development-tools"]
 
 [dependencies]
 # CLI
