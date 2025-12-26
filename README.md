@@ -11,6 +11,8 @@ A sandbox manager for Claude Code. Run multiple isolated Claude Code instances w
 - **Provider Support** - Use Anthropic directly or configure alternative providers (Z.ai, Minimax, custom anthropic endpoints)
 - **Cross-Platform** - Works on Windows, macOS, and Linux
 
+![Demo](images/claude-box-demo.gif)
+
 ## Installation
 
 ### Quick Install
