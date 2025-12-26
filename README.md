@@ -1,4 +1,4 @@
-# claude-box
+# claude-box [![Release](https://github.com/movecx/claude-box/actions/workflows/release.yml/badge.svg)](https://github.com/movecx/claude-box/actions/workflows/release.yml)
 
 ![claude-box](images/claude-box.png)
 
