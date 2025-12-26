@@ -1,0 +1,44 @@
+[package]
+name = "claude-box"
+version = "0.1.0"
+edition = "2024"
+description = "A multi-platform Claude Code sandbox manager"
+license = "MIT"
+repository = "https://github.com/movecx/claude-box"
+
+[dependencies]
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# Configuration
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+
+# Cross-platform paths
+directories = "5"
+
+# TUI Framework
+ratatui = "0.29"
+crossterm = "0.28"
+
+# PTY and Terminal Emulation
+portable-pty = "0.8"
+tui-term = "0.2"
+vt100 = "0.15"
+
+# Async Runtime
+tokio = { version = "1", features = ["full"] }
+
+# Error Handling
+anyhow = "1"
+thiserror = "2"
+
+# Date/Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Find executables
+which = "7"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = "0.3"
