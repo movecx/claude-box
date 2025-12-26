@@ -17,7 +17,7 @@ A sandbox manager for Claude Code. Run multiple isolated Claude Code instances w
 
 **macOS / Linux:**
 ```bash
-curl -sSfL https://raw.githubusercontent.com/movecx/claude-box/main/install.sh | sh
+curl -sSfL https://raw.githubusercontent.com/movecx/claude-box/master/install.sh | sh
 ```
 
 **Windows (PowerShell):**
