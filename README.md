@@ -22,7 +22,7 @@ curl -sSfL https://raw.githubusercontent.com/movecx/claude-box/main/install.sh |
 
 **Windows (PowerShell):**
 ```powershell
-irm https://raw.githubusercontent.com/movecx/claude-box/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/movecx/claude-box/master/install.ps1 | iex
 ```
 
 ### From Source
