@@ -1,13 +1,17 @@
 use ratatui::{
     layout::Rect,
-    style::{Color, Style},
+    style::{Color, Modifier, Style},
     text::{Line, Span},
     widgets::{Block, Borders, Paragraph},
     Frame,
 };
 
-/// Predefined colors for selection
+/// Special value for no border
+const NO_BORDER: &str = "none";
+
+/// Predefined colors for selection (None first, then colors)
 const COLORS: &[(&str, &str)] = &[
+    ("none", "None"),
     ("#3498db", "Blue"),
     ("#27ae60", "Green"),
     ("#e74c3c", "Red"),
@@ -68,19 +72,37 @@ impl ColorPicker {
         // Build color swatches
         let mut spans = Vec::new();
         for (i, (hex, name)) in COLORS.iter().enumerate() {
-            let (r, g, b) = parse_hex(hex);
-            let color = Color::Rgb(r, g, b);
+            let is_none = *hex == NO_BORDER;
 
             if i == self.selected {
-                spans.push(Span::styled(
-                    format!(" [●] {} ", name),
-                    Style::default().fg(color),
-                ));
+                if is_none {
+                    // "None" option - show without color swatch
+                    spans.push(Span::styled(
+                        format!(" [{}] ", name),
+                        Style::default().fg(Color::White).add_modifier(Modifier::BOLD),
+                    ));
+                } else {
+                    let (r, g, b) = parse_hex(hex);
+                    let color = Color::Rgb(r, g, b);
+                    spans.push(Span::styled(
+                        format!(" [●] {} ", name),
+                        Style::default().fg(color),
+                    ));
+                }
             } else {
-                spans.push(Span::styled(
-                    format!("  ●  "),
-                    Style::default().fg(color),
-                ));
+                if is_none {
+                    spans.push(Span::styled(
+                        "  ○  ",
+                        Style::default().fg(Color::DarkGray),
+                    ));
+                } else {
+                    let (r, g, b) = parse_hex(hex);
+                    let color = Color::Rgb(r, g, b);
+                    spans.push(Span::styled(
+                        "  ●  ",
+                        Style::default().fg(color),
+                    ));
+                }
             }
         }
 

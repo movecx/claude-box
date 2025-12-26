@@ -151,6 +151,9 @@ fn default_border_color() -> String {
     "#3498db".to_string()
 }
 
+/// Special value indicating no border (run Claude directly)
+pub const NO_BORDER: &str = "none";
+
 impl EnvironmentConfig {
     /// Create a new environment config with the given name
     pub fn new(name: String) -> Self {
@@ -165,6 +168,11 @@ impl EnvironmentConfig {
     /// Parse border color to ratatui Color
     pub fn border_color_rgb(&self) -> (u8, u8, u8) {
         parse_hex_color(&self.border_color).unwrap_or((52, 152, 219)) // Default blue
+    }
+
+    /// Check if this environment should run without a border
+    pub fn is_no_border(&self) -> bool {
+        self.border_color.eq_ignore_ascii_case(NO_BORDER)
     }
 }
 

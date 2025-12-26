@@ -2,6 +2,7 @@ use anyhow::{anyhow, Result};
 use clap::Parser;
 use claude_box::cli::{Cli, Command};
 use claude_box::config::{Config, Paths};
+use claude_box::pty::run_direct_claude_code;
 use claude_box::terminal::TerminalWrapper;
 use claude_box::tui::run_config_tui;
 
@@ -62,7 +63,12 @@ fn main() -> Result<()> {
     // Get current working directory
     let working_dir = std::env::current_dir()?;
 
-    // Run the terminal wrapper
+    // Check if running in no-border mode
+    if env_config.is_no_border() {
+        return run_direct_claude_code(&claude_data_dir, env_config, &working_dir);
+    }
+
+    // Run the terminal wrapper with border
     let wrapper = TerminalWrapper::new(env_config, &claude_data_dir, &working_dir);
     wrapper.run()
 }
